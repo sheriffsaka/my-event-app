@@ -4,6 +4,7 @@ import { Platform, StyleSheet, Text, TextInput, View, Image, Button} from "react
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import EventScreen from './Screens/EventScreen';
 import HomeScreen from './Screens/HomeScreen';
+import LoginScreen from './Screens/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,9 @@ export default function App() {
           <Stack.Navigator>
           <Stack.Screen name = "HomeScreen" component = {HomeScreen} />
           <Stack.Screen name = "EventScreen" component = {EventScreen} />
+          <Stack.Screen name = "LoginScreen" component = {LoginScreen} />
+          
+          {/* <Stack.Screen name = "EventScreen" component = {EventScreen} /> */}
             
             
           </Stack.Navigator>
