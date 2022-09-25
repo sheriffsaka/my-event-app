@@ -2,12 +2,25 @@
 $conn = mysqli_connect("localhost", "sheriff", "Adetunji12");
 $db = mysqli_select_db($conn, "appmartevent");
 
-$email = $_POST['email'];
-$esession = $_POST['esession'];
-$datereg = $_POST['datereg'];
+//Format the data for react-native to understant
+$EncodeData = file_get_contents('php://input');
+//Passing the data to json format
+$DecodeData = json_decode($EncodeData, true);
 
-$Addrec = "INSERT INTO eventreg(email, esession, datereg) VALUES('$email','$esession','$datereg')";
-//$addrec = "insert into eventreg(email, esession, datereg) values($email, $esession, $datereg)";
+//Testing connection to the database
+$email = $DecodeData['email'];
+$password = $DecodeData['password'];
+$telephone = $DecodeData['telephone'];
+$eventtype = $DecodeData['eventype'];
+
+
+// Testing connection to the database
+// $email = $_POST['email'];
+// $password = $_POST['password'];
+// $telephone = $_POST['telephone'];
+// $eventtype = $_POST['eventtype'];
+
+$Addrec = "INSERT INTO eventreg(email, password, telephone, eventtype) VALUES('$email','$password','$telephone','$eventtype')";
 $result = mysqli_query($conn, $Addrec);
 
 if($result){

@@ -23,7 +23,34 @@ export default class HomeScreen extends Component {
     {
       alert("Required field is missing");
     }else{
-      alert("Success - Fetching the API code here.");
+      //alert("Success - Fetching the API code here.");
+      // var InserAPIURL = "http://10.0.2.2:80/backend/addevent.php";
+      var InserAPIURL = "http://localhost/appmartproject/addevent.php";
+      var headers = {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application.json'
+      };
+
+      var Data = {
+        email : email,
+        password : password,
+        telephone : telephone,
+        eventtype : eventtype
+      };
+
+      fetch(InserAPIURL,{
+          method: 'POST',
+            headers: headers,
+            body: JSON.stringify(Data)
+
+      })
+      .then((response) => response.json())
+      .then(response=>{
+        alert(response[0].Message);
+      })
+      .catch((error) =>{
+        alert("Error" + error);
+      })
     }
   }
   render() {  
@@ -49,7 +76,7 @@ export default class HomeScreen extends Component {
             placeholderTextColor={"#FF0000"}
             keyboardType="email-address"
             style={styles.txtStyle}
-            onChange={email=>this.setState({email})}
+            onChangeText={email=>this.setState({email})}
         />
         <TextInput 
             placeholder={"Password"}
@@ -57,7 +84,7 @@ export default class HomeScreen extends Component {
             placeholderTextColor={"#FF0000"}
             secureTextEntry={true}
             style={styles.txtStyle}
-            onChange={password=>this.setState({password})}
+            onChangeText={password=>this.setState({password})}
         />
       
         <TextInput 
@@ -65,7 +92,7 @@ export default class HomeScreen extends Component {
             name = "telephone"
             placeholderTextColor={"#FF0000"}
             style={styles.txtStyle}
-            onChange={telephone=>this.setState({telephone})}
+            onChangeText={telephone=>this.setState({telephone})}
         />
       
         <TextInput 
@@ -73,7 +100,7 @@ export default class HomeScreen extends Component {
             name = "eventtype"
             placeholderTextColor={"#FF0000"}
             style={styles.txtStyle}
-            onChange={eventtype=>this.setState({eventtype})}
+            onChangeText={eventtype=>this.setState({eventtype})}
         />
         
         <Button style={styles.registerButton}
