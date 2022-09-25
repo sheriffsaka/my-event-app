@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {ScrollView, View, AppText, Text, TextInput, StyleSheet, Button, Image, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
 
 export default class LoginScreen extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class LoginScreen extends Component {
         <TextInput 
             placeholder={"Password"}
             placeholderTextColor={"#FF0000"}
+            secureTextEntry={true}
             style={styles.txtStyle}
         />
         
@@ -30,7 +32,11 @@ export default class LoginScreen extends Component {
         title={"Log In"}  onPress ={()=>
         alert("You have been successfully")}/>
 
-        <Image style={styles.image} source={require('../assets/qr-code.png')} />
+        {/* <Image style={styles.image} source={require('../assets/qr-code.png')} /> */}
+        <View style={{justifyContent: 'center', marginLeft: 90, marginTop:30, width: 150, height: 150}}>
+          <QRCode style={styles.image} value ='https://appmart.ng/' />
+        </View>
+
         <Text style={{textAlign: 'center'}}>Scan the QR image above to attend Event</Text>
       </View>
     )

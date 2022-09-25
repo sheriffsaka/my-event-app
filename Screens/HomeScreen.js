@@ -1,7 +1,7 @@
 import React, { Component, useState, createRef } from 'react';
 import {ScrollView, View, Text, TextInput, StyleSheet, Button, 
   Image, Keyboard, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import AppText from '../components/AppText';
 
@@ -43,7 +43,7 @@ export default class HomeScreen extends Component {
               source = {require('../assets/event1.png')}
         />
           <Text style={{fontSize: 20, fontWeight: 'bold'}}>Event Registration Form</Text>
-        <AppText>Email</AppText>
+        
         <TextInput 
             placeholder={"E-mail"}
             name = "email"
@@ -56,6 +56,7 @@ export default class HomeScreen extends Component {
             placeholder={"Password"}
             name = "password"
             placeholderTextColor={"#FF0000"}
+            secureTextEntry={true}
             style={styles.txtStyle}
         />
         <Text style={{color: 'red'}}>{errors.password}</Text>
@@ -77,8 +78,9 @@ export default class HomeScreen extends Component {
 
         <Button style={styles.registerButton}
         title={"Save Event"}  onPress ={handleSubmit}/>
+        
         <View>
-        <Text>SacTech Computers</Text>
+        <Text>Appmart Integrated Limited Event Registration</Text>
         </View>
 
         </KeyboardAvoidingView>
