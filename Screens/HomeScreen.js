@@ -10,36 +10,35 @@ import AppText from '../components/AppText';
 export default class HomeScreen extends Component {
   constructor(props){
     super(props);
-    this.state={email: '', password: '', telephone: '', eventtype: ''}
+    this.state={email: '', upassword: '', telephone: '', eventtype: ''}
   }
   
   InsertRecord = () =>{
     var email = this.state.email;
-    var password = this.state.password;
+    var upassword = this.state.upassword;
     var telephone = this.state.telephone;
     var eventtype = this.state.eventtype;
 
-    if(email.length == 0 || password.length == 0 || telephone.length == 0 || eventtype.length == 0)
+    if(email.length == 0 || upassword.length == 0 || telephone.length == 0 || eventtype.length == 0)
     {
       alert("Required field is missing");
     }else{
       //alert("Success - Fetching the API code here.");
-      // var InserAPIURL = "http://10.0.2.2:80/backend/addevent.php";
-      var InserAPIURL = "http://localhost/appmartproject/addevent.php";
+      var InsertAPIURL = ("http://192.168.43.226:80/backend/addevent.php");
       var headers = {
         'Accept' : 'application/json',
-        'Content-Type' : 'application.json'
+        'Content-Type' : 'application/json'
       };
 
       var Data = {
         email : email,
-        password : password,
+        upassword : upassword,
         telephone : telephone,
         eventtype : eventtype
       };
 
-      fetch(InserAPIURL,{
-          method: 'POST',
+      fetch(InsertAPIURL,{
+            method: 'POST',
             headers: headers,
             body: JSON.stringify(Data)
 
@@ -47,6 +46,7 @@ export default class HomeScreen extends Component {
       .then((response) => response.json())
       .then(response=>{
         alert(response[0].Message);
+        this.props.navigation.navigate("LoginScreen");
       })
       .catch((error) =>{
         alert("Error" + error);
@@ -80,11 +80,11 @@ export default class HomeScreen extends Component {
         />
         <TextInput 
             placeholder={"Password"}
-            name = "password"
+            name = "upassword"
             placeholderTextColor={"#FF0000"}
             secureTextEntry={true}
             style={styles.txtStyle}
-            onChangeText={password=>this.setState({password})}
+            onChangeText={upassword=>this.setState({upassword})}
         />
       
         <TextInput 

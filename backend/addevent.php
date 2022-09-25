@@ -9,18 +9,12 @@ $DecodeData = json_decode($EncodeData, true);
 
 //Testing connection to the database
 $email = $DecodeData['email'];
-$password = $DecodeData['password'];
+$upassword = $DecodeData['upassword'];
 $telephone = $DecodeData['telephone'];
-$eventtype = $DecodeData['eventype'];
+$eventtype = $DecodeData['eventtype'];
 
 
-// Testing connection to the database
-// $email = $_POST['email'];
-// $password = $_POST['password'];
-// $telephone = $_POST['telephone'];
-// $eventtype = $_POST['eventtype'];
-
-$Addrec = "INSERT INTO eventreg(email, password, telephone, eventtype) VALUES('$email','$password','$telephone','$eventtype')";
+$Addrec = "INSERT INTO eventreg(email, upassword, telephone, eventtype) VALUES('$email','$upassword','$telephone','$eventtype')";
 $result = mysqli_query($conn, $Addrec);
 
 if($result){
@@ -28,7 +22,7 @@ if($result){
 }else{
     $message = "Server Error. Please try again later";
 }
-$Response[]=array("Message => $message");
+$Response[]=array("Message" => $message);
 echo json_encode($Response);
 
 ?>
