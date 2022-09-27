@@ -24,7 +24,8 @@ export default class HomeScreen extends Component {
       alert("Required field is missing");
     }else{
       //alert("Success - Fetching the API code here.");
-      var InsertAPIURL = ("http://192.168.43.226:80/backend/addevent.php");
+      // var InsertAPIURL = ("http://192.168.43.226:80/appmartproject/appmarttask/my-event-app/backend/addevent.php");
+      var InsertAPIURL = ("http://192.168.43.226:80/appmartproject/appmarttask/my-event-app/backend/addevent.php");
       var headers = {
         'Accept' : 'application/json',
         'Content-Type' : 'application/json'

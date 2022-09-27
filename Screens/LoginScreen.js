@@ -6,31 +6,31 @@ export default class LoginScreen extends Component {
 
   constructor(props){
     super(props);
-    this.state={email: '', password: ''}
+    this.state={email: '', upassword: ''}
   }
   
   GetRecord = () =>{
     var email = this.state.email;
-    var password = this.state.password;
+    var upassword = this.state.upassword;
   
-    if(email.length == 0 || password.length == 0 )
+    if(email.length == 0 || upassword.length == 0 )
     {
       alert("Required field is missing");
     }else{
       //alert("Success - Fetching the API code here.");
-      // var InserAPIURL = "http://10.0.2.2:80/backend/addevent.php";
-      var InserAPIURL = "http://localhost/appmartproject/addevent.php";
+      // var InsertAPIURL = "http://192.168.43.226:80/appmartproject/appmarttask/my-event-app/backend/addevent.php";
+      var InsertAPIURL = "http://localhost:80/appmartproject/appmarttask/my-event-app/backend/addevent.php";
       var headers = {
         'Accept' : 'application/json',
-        'Content-Type' : 'application.json'
+        'Content-Type' : 'application/json'
       };
 
       var Data = {
         email : email,
-        password : password
+        upassword : upassword
       };
 
-      fetch(InserAPIURL,{
+      fetch(InsertAPIURL,{
           method: 'POST',
             headers: headers,
             body: JSON.stringify(Data)
@@ -41,7 +41,7 @@ export default class LoginScreen extends Component {
         alert(response[0].Message);
       })
       .catch((error) =>{
-        alert("Error" + error);
+        alert("Error " + error);
       })
     }
   }
@@ -71,7 +71,7 @@ export default class LoginScreen extends Component {
             placeholderTextColor={"#FF0000"}
             secureTextEntry={true}
             style={styles.txtStyle}
-            onChangeText={password=>this.setState({password})}
+            onChangeText={upassword=>this.setState({upassword})}
         />
         
         <Button style={styles.registerButton}
