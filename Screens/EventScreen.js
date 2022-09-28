@@ -16,7 +16,7 @@ export default class EventScreen extends Component {
         <Card 
           title="Photography Training"
           subTitle="N20,000"
-          image = {require("../assets/camera.png")}
+          image = {require("../assets/camera2.png")}
         />
         <Card 
           title="Web Design Training"
